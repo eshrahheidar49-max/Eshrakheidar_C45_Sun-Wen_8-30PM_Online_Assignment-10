@@ -5,6 +5,8 @@ import { GenderEnum } from "./common/Enum/user.enum.js";
 
 
 bootstrap();
+
+
 //console.log(GenderEnum.values);
 //console.log(Object.values(GenderEnum));
 

@@ -1,19 +1,20 @@
 import express from "express";
 import chechConnectionDb from "./DB/connectionDB.js";
 import userRouter from "./DB/modules/user.controller.js";
+import cors from "cors";
 const app = express();
 
-const port = 3000;
+const port = process.env.PORT;
 
 const bootstrap = () => {
-  
+  app.use(cors())
   app.use(express.json()); // handle coming data in buffer formate
 
   app.get("/", (req, res, next) => {
     res.status(200).json({ message: "Welcome on my App.....❤" });
   });
   chechConnectionDb();
-  app.use("/user",userRouter)
+  app.use("/users",userRouter)
 
   app.use("{/*dumy}", (req, res, next) => {
     next(new Error("URL " + req.originalUrl + " is not found....😢 ",{cause:404}))
